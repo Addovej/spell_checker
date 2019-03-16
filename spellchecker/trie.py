@@ -11,6 +11,15 @@ class Trie(object):
     def __init__(self):
         self.node = Node()
 
+    def __contains__(self, item):
+        curr_node = self.node
+        for i in item:
+            if i not in curr_node.children:
+                return False
+            else:
+                curr_node = curr_node.children[i]
+        return True
+
     def append(self, item):
         cur_node = self.node
         for i in item:

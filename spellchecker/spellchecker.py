@@ -8,12 +8,21 @@ class Spellchecker(object):
         self.trie = Trie()
         self.load(words_from_os())
 
+    def __contains__(self, item):
+        return item in self.trie
+
     def load(self, words: list):
         try:
             for word in words:
                 self.trie.append(word)
         except Exception as e:
             print('Oops, error is happened. Message: {}'.format(e))
+
+    def check(self, word: str) -> bool:
+        return word in self.trie
+
+    def check_list(self, words: list) -> list:
+        return [word for word in words if not self.check(word)]
 
     def suggest(self, word: [str], l_distance: int=1) -> [str]:
         def _suggest(node, char, prev_row):
@@ -40,9 +49,7 @@ class Spellchecker(object):
         for child in self.trie.node.children:
             _suggest(self.trie.node.children[child], child, curr_row)
 
-        is_correct = word in results
-
-        return {'correct': is_correct, 'suggestions': [] if is_correct else results}
+        return results
 
     def suggest_list(self, words: [str], l_distance: int=1) -> {str: [str]}:
         results = {}
