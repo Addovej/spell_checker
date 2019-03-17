@@ -1,14 +1,14 @@
 import os
 
 
-def words_from_os():
+def words_from_os() -> [str]:
     if os.name in ['posix']:
         with open('/usr/share/dict/words') as words:
             return [normalize(word) for word in words]
     return []
 
 
-def words_from_file(file: str):
+def words_from_file(file: str) -> [str]:
     words = []
     try:
         with open(file) as file:
@@ -20,7 +20,7 @@ def words_from_file(file: str):
     return words
 
 
-def normalize(string: str):
+def normalize(string: str) -> str:
     return string.lower().strip()
 
 

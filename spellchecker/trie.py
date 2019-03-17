@@ -11,7 +11,7 @@ class Trie(object):
     def __init__(self):
         self.node = Node()
 
-    def __contains__(self, item):
+    def __contains__(self, item) -> bool:
         curr_node = self.node
         for i in item:
             if i not in curr_node.children:
@@ -20,7 +20,7 @@ class Trie(object):
                 curr_node = curr_node.children[i]
         return True
 
-    def append(self, item):
+    def append(self, item: str):
         cur_node = self.node
         for i in item:
             if i in cur_node.children:

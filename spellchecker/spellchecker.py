@@ -8,7 +8,7 @@ class Spellchecker(object):
         self.trie = Trie()
         self.load(words_from_os())
 
-    def __contains__(self, item):
+    def __contains__(self, item: str) -> bool:
         return item in self.trie
 
     def load(self, words: list):
