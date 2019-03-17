@@ -21,3 +21,7 @@ Please type a word or text: sometimes we can make a mistakse
 sometimes we can make a *mistakse* 
 {'mistakse': ['mistake']}
 ```
+Run tests
+```commandline
+pytest -s -v tests/spellchecker.py
+```
