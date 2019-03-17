@@ -8,7 +8,7 @@ git clone https://github.com/Addovej/spellchecker.git
 cd spellchecker
 ```
 ```commandline
-python3 main.py
+python3 main.py --file <path_to_file> (optional)
 
 Please type a word or text: test
 The word is correct.
