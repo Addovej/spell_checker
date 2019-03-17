@@ -1,16 +1,13 @@
+import sys
 from spellchecker import Spellchecker
-
-
-def normalize(string: str):
-    return string.lower().strip()
-
-
-def highlight_incorrect(string: str) -> str:
-    return '\33[31m{}\33[0m'.format(string)
+from spellchecker.utils import words_from_file, normalize, highlight_incorrect
 
 
 if __name__ == "__main__":
     spellchecker = Spellchecker()
+
+    if len(sys.argv) > 2 and (sys.argv[1] in ['--file', '-f']):
+        spellchecker.load(words_from_file(sys.argv[2]))
 
     while True:
         user_input = input('Please type a word or text: ')
