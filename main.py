@@ -17,7 +17,7 @@ if __name__ == "__main__":
         maybe_text = user_input.split(' ')
 
         if len(maybe_text) > 1:
-            wrong = spellchecker.check_list(maybe_text)
+            wrong = spellchecker.check_list(words=list(map(normalize, maybe_text)))
             if len(wrong) > 0:
                 output = ''
                 for word in maybe_text:
@@ -29,7 +29,7 @@ if __name__ == "__main__":
             else:
                 print('Your text is correct.')
         else:
-            if spellchecker.check(word=user_input):
+            if spellchecker.check(word=normalize(user_input)):
                 print('The word is correct.')
             else:
                 suggestions = spellchecker.suggest(word=normalize(user_input))
